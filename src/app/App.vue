@@ -106,13 +106,15 @@ async function fullscreen() {
                 <MousePointer2 :size="14" /> 按住拖动，环顾四周
               </div></PanoramaView
             ><HotspotDetail
-              v-if="w.discovery.detail.value && !w.branch.personId.value"
-              :hotspot="w.discovery.detail.value"
-              :saved="w.journal.has(w.discovery.detail.value.id)"
+              v-if="w.discovery.hotspot.value && !w.branch.personId.value"
+              :hotspot="w.discovery.hotspot.value"
+              :card="w.discovery.card.value"
+              :live="w.discovery.isLive.value"
+              :saved="w.journal.has(w.discovery.hotspot.value.id)"
               @close="w.discovery.close()"
               @save="w.save()"
               @interview="
-                w.enterPerson(w.discovery.detail.value?.personId || '')
+                w.enterPerson(w.discovery.hotspot.value?.personId || '')
               "
             /><InterviewPanel
               :branch="w.branch"
